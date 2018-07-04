@@ -1,3 +1,3 @@
 <?php
 
-phpInfo();
+require_once 'autoload.php';
