@@ -3,6 +3,7 @@ version: "2"
 services:
   php:
     image: php:7.1-fpm-alpine
+    build: ./config/php-fpm
     volumes:
       - .:/var/www
 
