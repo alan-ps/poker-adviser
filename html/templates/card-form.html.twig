@@ -3,8 +3,9 @@
  * @file
  * Default theme implementation for a 'card' form element.
  */
+ @todo: default value!
 #}
-{% set cards = {
+{% set ranks = {
   2: '2',
   3: '3',
   4: '4',
@@ -22,21 +23,19 @@
 
 {%
   set suits = {
-    1: 'clubs (♧)',
-    2: 'diamonds (♢)',
-    3: 'hearts (♥)',
-    4: 'spades (♤)'
+    1: 'Club (♧)',
+    2: 'Diamond (♢)',
+    3: 'Heart (♥)',
+    4: 'Spade (♤)'
   }
 %}
 
-<select class="class {{ class }}">
-  {% for key,card in cards %}
-    <option value="{{ key }}">{{ card }}</option>
-  {% endfor %}
-</select>
-
-<select class="suit {{ class }}">
-  {% for key,suit in suits %}
-    <option value="{{ key }}">{{ suit }}</option>
+<select class="poker-adviser-card {{ class }}" {% if required is defined %}required{% endif %}>
+  <option value=""> - Select - </option>
+  {% for suit_key, suit in suits %}
+    {% for rank_key, rank in ranks %}
+      {% set rank_code = (rank_key >= 10) ? [suit_key, rank_key, 0]|join('') : [suit_key, 0, rank_key, 0]|join('') %}
+      <option value="{{ rank_code }}">{{ rank }} {{ suit }}</option>
+    {% endfor %}
   {% endfor %}
 </select>
