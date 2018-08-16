@@ -29,18 +29,14 @@
   }
 %}
 
-<form action="#">
+<select class="class {{ class }}">
+  {% for key,card in cards %}
+    <option value="{{ key }}">{{ card }}</option>
+  {% endfor %}
+</select>
 
-  <select class="class {{ class }}">
-    {% for key,card in cards %}
-      <option value="{{ key }}">{{ card }}</option>
-    {% endfor %}
-  </select>
-
-  <select class="suit {{ class }}">
-    {% for key,suit in suits %}
-      <option value="{{ key }}">{{ suit }}</option>
-    {% endfor %}
-  </select>
-
-</form>
+<select class="suit {{ class }}">
+  {% for key,suit in suits %}
+    <option value="{{ key }}">{{ suit }}</option>
+  {% endfor %}
+</select>
